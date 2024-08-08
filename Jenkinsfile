@@ -75,7 +75,7 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                       sh 'kubectl apply -f k8s/chatbot-ui.yaml'
+                       sh 'kubectl apply -f k8s/chatbot-ui.yaml --validate=false'
                   }
                 }
             }
