@@ -75,7 +75,7 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.14:6443') {
-                       sh 'kubectl apply -f k8s/chatbot-ui.yaml --insecure-skip-tls-verify '
+                       sh 'kubectl apply -f k8s/chatbot-ui.yaml --validate=false --insecure-skip-tls-verify '
                   }
                 }
             }
