@@ -74,7 +74,7 @@ pipeline{
         stage('Deploy to kubernets'){
             steps{
                 script{
-                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.14:6443') {
                        sh 'kubectl apply -f k8s/chatbot-ui.yaml --validate=false'
                   }
                 }
@@ -83,7 +83,7 @@ pipeline{
         stage('scan cluster'){
             steps{
                 script{
-                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.14:6443') {
                        sh 'trivy k8s --report summary cluster'
                   }
                 }
