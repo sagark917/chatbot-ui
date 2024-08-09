@@ -84,7 +84,7 @@ pipeline{
             steps{
                 script{
                     withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.14:6443') {
-                       sh 'trivy k8s --report summary cluster'
+                       sh 'trivy k8s --report summary kubernetes'
                   }
                 }
             }
